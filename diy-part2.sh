@@ -15,7 +15,9 @@
 
 # Modify default theme
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
-
+sed -i 's/ImmortalWrt/HTWRT/g' package/base-files/files/bin/config_generate
+sed -i "s/ImmortalWrt/HTWRT/g" package/base-files/files/etc/banner
+echo "HT WRT mod 1.52026" > package/base-files/files/etc/openwrt_version
 # Modify hostname
 #sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
 # Thay đổi tên Model hiển thị
