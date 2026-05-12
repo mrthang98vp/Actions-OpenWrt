@@ -18,3 +18,10 @@
 
 # Modify hostname
 #sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
+# Thay đổi tên Model hiển thị
+sed -i 's/Xiaomi Mi Router AX3000T/NR3053 Custom/g' target/linux/mediatek/dts/mt7981-xiaomi-mi-router-ax3000t.dts
+
+# Ép tích hợp Driver Wifi MT7981 vào bản build
+echo "CONFIG_PACKAGE_kmod-mt7981=y" >> .config
+echo "CONFIG_PACKAGE_kmod-mt798x-common=y" >> .config
+echo "CONFIG_PACKAGE_wpad-basic-mbedtls=y" >> .config
