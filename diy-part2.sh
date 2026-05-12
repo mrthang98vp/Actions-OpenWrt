@@ -25,3 +25,8 @@ sed -i 's/Xiaomi Mi Router AX3000T/NR3053 Custom HT/g' target/linux/mediatek/dts
 echo "CONFIG_PACKAGE_kmod-mt7981=y" >> .config
 echo "CONFIG_PACKAGE_kmod-mt798x-common=y" >> .config
 echo "CONFIG_PACKAGE_wpad-basic-mbedtls=y" >> .config
+# Đảm bảo eth0 hoặc cổng tương ứng được gán đúng (tùy thực tế hardware)
+sed -i 's/device "eth0"/device "eth1"/g' package/base-files/files/bin/config_generate
+echo "CONFIG_TARGET_ROOTFS_PARTSIZE=40" >> .config
+# Thêm giao diện tiếng Việt cho anh em dễ dùng
+echo "CONFIG_PACKAGE_luci-i18n-base-vi=y" >> .config
