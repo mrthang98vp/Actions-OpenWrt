@@ -15,20 +15,21 @@
 
 # Modify default theme
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
-sed -i 's/ImmortalWrt/HTWRT/g' package/base-files/files/bin/config_generate
-sed -i "s/ImmortalWrt/HTWRT/g" package/base-files/files/etc/banner
-echo "HT WRT mod 1.52026" > package/base-files/files/etc/openwrt_version
-# Modify hostname
-#sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
-# Thay đổi tên Model hiển thị
-sed -i 's/Xiaomi Mi Router AX3000T/NR3053 Custom HT/g' target/linux/mediatek/dts/mt7981-xiaomi-mi-router-ax3000t.dts
+# 1. Đổi tên Model và Hostname
+sed -i 's/Xiaomi Mi Router AX3000T/NR3053 Custom HTWrt/g' target/linux/mediatek/dts/mt7981-xiaomi-mi-router-ax3000t.dts
+sed -i 's/ImmortalWrt/HTWrt/g' package/base-files/files/bin/config_generate
 
-# Ép tích hợp Driver Wifi MT7981 vào bản build
+# 2. Đổi Firmware Version
+echo "HT Wrt mod 1.52026" > package/base-files/files/etc/openwrt_version
+
+# 3. Ép driver Wifi và các gói quan trọng
 echo "CONFIG_PACKAGE_kmod-mt7981=y" >> .config
 echo "CONFIG_PACKAGE_kmod-mt798x-common=y" >> .config
 echo "CONFIG_PACKAGE_wpad-basic-mbedtls=y" >> .config
 # Đảm bảo eth0 hoặc cổng tương ứng được gán đúng (tùy thực tế hardware)
 sed -i 's/device "eth0"/device "eth1"/g' package/base-files/files/bin/config_generate
-echo "CONFIG_TARGET_ROOTFS_PARTSIZE=40" >> .config
+echo "CONFIG_TARGET_ROOTFS_PARTSIZE=220" >> .config
 # Thêm giao diện tiếng Việt cho anh em dễ dùng
 echo "CONFIG_PACKAGE_luci-i18n-base-vi=y" >> .config
+# Tối ưu hóa việc sử dụng RAM cho các tác vụ nặng
+echo "CONFIG_KERNEL_SWAP=y" >> .config
