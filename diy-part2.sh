@@ -9,7 +9,8 @@ sed -i 's/ImmortalWrt/HTWRT/g' package/base-files/files/bin/config_generate
 
 # Đổi số phiên bản Firmware (Hiển thị ở trang chính)
 echo "1.52026-HTWrt mod" > package/base-files/files/etc/openwrt_version
-
+# Ép hệ thống nhận tên model mới khi khởi động
+sed -i 's/Xiaomi Mi Router AX3000T/NR3053 Custom HTWrt/g' package/base-files/files/bin/config_generate
 # 2. Tối ưu hóa hệ thống & Lưu trữ
 # Tăng dung lượng phân vùng cài đặt lên 220MB (Cho ROM 256MB cực kỳ thoải mái)
 echo "CONFIG_TARGET_ROOTFS_PARTSIZE=220" >> .config
