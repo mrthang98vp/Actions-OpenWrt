@@ -12,6 +12,4 @@ echo "CONFIG_PACKAGE_wpad-mesh-openssl=y" >> .config
 # 3. Tự động bật Wifi ngay khi khởi động
 sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 # 4. Giao diện & Tính năng
-echo "CONFIG_PACKAGE_luci-theme-argon=y" >> .config
-echo "CONFIG_PACKAGE_luci-app-argon-config=y" >> .config
 echo "CONFIG_PACKAGE_luci-app-statistics=y" >> .config
