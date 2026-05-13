@@ -24,9 +24,10 @@ sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac802
 
 # 3. Ép tích hợp Driver Wi-Fi & Giao diện Argon (Giao diện đẹp nhất)
 # Driver Wi-Fi chip MT7981
-echo "CONFIG_PACKAGE_kmod-mt7981=y" >> .config
-echo "CONFIG_PACKAGE_kmod-mt798x-common=y" >> .config
-echo "CONFIG_PACKAGE_wpad-basic-mbedtls=y" >> .config
+echo "CONFIG_PACKAGE_kmod-mt7981-firmware=y" >> .config
+echo "CONFIG_PACKAGE_kmod-mt79x1-common=y" >> .config
+echo "CONFIG_PACKAGE_kmod-mt7981-common=y" >> .config
+echo "CONFIG_PACKAGE_wpad-mesh-openssl=y" >> .config
 
 # Chuyển mặc định sang giao diện Argon (Có Dark Mode, đổi hình nền)
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
