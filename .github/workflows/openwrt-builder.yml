@@ -20,7 +20,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Ho_Chi_Minh
-
+  
 jobs:
   build:
     runs-on: ubuntu-22.04
